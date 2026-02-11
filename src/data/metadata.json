@@ -1,0 +1,75 @@
+{
+  "currentTraining": {
+    "judgmental": [
+      { "metric": "accuracy", "value": 72, "timestamp": "2026-02-10T10:00:00" },
+      { "metric": "accuracy", "value": 75, "timestamp": "2026-02-10T10:01:00" },
+      { "metric": "accuracy", "value": 78, "timestamp": "2026-02-10T10:02:00" },
+      { "metric": "accuracy", "value": 82, "timestamp": "2026-02-10T10:03:00" },
+      { "metric": "accuracy", "value": 85, "timestamp": "2026-02-10T10:04:00" },
+
+      { "metric": "reactionTime", "value": 1.8, "timestamp": "2026-02-10T10:00:00" },
+      { "metric": "reactionTime", "value": 1.7, "timestamp": "2026-02-10T10:01:00" },
+      { "metric": "reactionTime", "value": 1.6, "timestamp": "2026-02-10T10:02:00" },
+      { "metric": "reactionTime", "value": 1.5, "timestamp": "2026-02-10T10:03:00" },
+      { "metric": "reactionTime", "value": 1.4, "timestamp": "2026-02-10T10:04:00" }
+    ],
+
+    "marksmanship": [
+      { "metric": "hits", "value": 30, "timestamp": "2026-02-10T10:00:00" },
+      { "metric": "hits", "value": 33, "timestamp": "2026-02-10T10:01:00" },
+      { "metric": "hits", "value": 36, "timestamp": "2026-02-10T10:02:00" },
+      { "metric": "hits", "value": 40, "timestamp": "2026-02-10T10:03:00" },
+      { "metric": "hits", "value": 45, "timestamp": "2026-02-10T10:04:00" },
+
+      { "metric": "shotsFired", "value": 40, "timestamp": "2026-02-10T10:00:00" },
+      { "metric": "shotsFired", "value": 42, "timestamp": "2026-02-10T10:01:00" },
+      { "metric": "shotsFired", "value": 44, "timestamp": "2026-02-10T10:02:00" },
+      { "metric": "shotsFired", "value": 47, "timestamp": "2026-02-10T10:03:00" },
+      { "metric": "shotsFired", "value": 50, "timestamp": "2026-02-10T10:04:00" }
+    ]
+  },
+
+  "pastTraining": [
+    {
+      "judgmental": [
+        { "metric": "accuracy", "value": 65, "timestamp": "2026-01-10T09:00:00" },
+        { "metric": "accuracy", "value": 70, "timestamp": "2026-01-10T09:05:00" },
+        { "metric": "accuracy", "value": 75, "timestamp": "2026-01-10T09:10:00" }
+      ]
+    },
+    {
+      "judgmental": [
+        { "metric": "accuracy", "value": 68, "timestamp": "2026-01-15T09:00:00" },
+        { "metric": "accuracy", "value": 73, "timestamp": "2026-01-15T09:05:00" },
+        { "metric": "accuracy", "value": 80, "timestamp": "2026-01-15T09:10:00" }
+      ]
+    }
+  ],
+
+  "playback": [
+    { "time": 0, "shots": [{ "x": 100, "y": 200 }] },
+
+    { "time": 1, "shots": [
+      { "x": 110, "y": 210 },
+      { "x": 120, "y": 205 }
+    ]},
+
+    { "time": 2, "shots": [
+      { "x": 130, "y": 220 },
+      { "x": 140, "y": 230 }
+    ]},
+
+    { "time": 3, "shots": [
+      { "x": 150, "y": 240 }
+    ]},
+
+    { "time": 4, "shots": [
+      { "x": 160, "y": 250 },
+      { "x": 170, "y": 245 }
+    ]},
+
+    { "time": 5, "shots": [
+      { "x": 180, "y": 260 }
+    ]}
+  ]
+}
