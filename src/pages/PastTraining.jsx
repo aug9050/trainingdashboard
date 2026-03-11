@@ -9,7 +9,7 @@ const PastTraining = () => {
     <div>
       <h2>Past Training Metrics</h2>
       {pastData.length ? (
-        pastData.map((session: any, idx: number) => (
+        pastData.map((session, idx) => (
           <ChartComponent key={idx} data={session.judgmental} dataKey="value" title={`Session ${idx + 1}`} />
         ))
       ) : (

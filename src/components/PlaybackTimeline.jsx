@@ -1,9 +1,9 @@
 import React from 'react';
 import { Box, Button } from '@mui/material';
 
-const PlaybackTimeline = ({ data, onBookmarkClick }: any) => (
+const PlaybackTimeline = ({ data, onBookmarkClick }) => (
   <Box display="flex" gap={1} mb={2}>
-    {data.map((point: any, idx: number) => (
+    {data.map((point, idx) => (
       <Button key={idx} variant="contained" onClick={() => onBookmarkClick(point.time)}>
         {point.time}s
       </Button>

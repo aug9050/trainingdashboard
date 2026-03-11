@@ -8,8 +8,8 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const ChartComponent = ({ data, title }: any) => {
-  const [animatedData, setAnimatedData] = useState<any[]>([]);
+const ChartComponent = ({ data, title }) => {
+  const [animatedData, setAnimatedData] = useState([]);
 
   useEffect(() => {
     let i = 0;

@@ -40,3 +40,46 @@
 .read-the-docs {
   color: #888;
 }
+
+
+.analytics-container {
+  padding: 30px;
+}
+
+.analytics-top {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.analytics-target {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  background: #0f2f5a;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.target-container {
+  position: relative;
+  width: 420px;
+  margin: auto;
+}
+
+.target-image {
+  width: 100%;
+  display: block;
+}
+
+.heatmap-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 210px;
+  height: 325px;
+  pointer-events: none;
+}

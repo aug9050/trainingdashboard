@@ -6,6 +6,7 @@ import PastTraining from './pages/PastTraining';
 import Playback from './pages/Playback';
 import TargetAnalytics from './pages/TargetAnalytics';
 import { Box } from '@mui/material';
+import Marksmanship from "./pages/Marksmanship";
 
 const App = () => (
   <Box display="flex" height="100vh">
@@ -17,6 +18,7 @@ const App = () => (
         <Route path="/past" element={<PastTraining />} />
         <Route path="/playback" element={<Playback />} />
         <Route path="/analytics" element={<TargetAnalytics />} />
+        <Route path="/marksmanship" element={<Marksmanship />} />
       </Routes>
     </Box>
   </Box>

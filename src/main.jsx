@@ -5,7 +5,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import darkBlueTheme from './theme';
 import { BrowserRouter } from 'react-router-dom';
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={darkBlueTheme}>
       <BrowserRouter>
