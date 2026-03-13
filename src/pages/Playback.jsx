@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import metadata from "../data/metadata.json";
 import CanvasShots from "../components/CanvasShots";
+import MantisWidget from "../components/MantisWidget";
 
 const Playback = () => {
 
@@ -34,9 +35,7 @@ const Playback = () => {
     .flatMap(p => p.shots || []);
 
   return (
-    <div style={{ padding: "30px" }}>
-
-      <h2>Training Playback</h2>
+    <div>
 
       {/* Target Board */}
       <div
@@ -47,7 +46,7 @@ const Playback = () => {
         }}
       >
         <img
-          src="/target.png"
+          src="/target_2.png"
           alt="target"
           style={{
             width: "100%",
@@ -59,37 +58,38 @@ const Playback = () => {
       </div>
 
       {/* Controls */}
-      <div style={{ display: "flex", gap: "10px" }}>
+      <div className="playback-controls">
 
-        <button onClick={() => setIsPlaying(!isPlaying)}>
-          {isPlaying ? "Pause" : "Play"}
+        <button className="circle-btn"
+          onClick={() => setIsPlaying(!isPlaying)}>
+          {isPlaying ? "⏸" : "▶"}
         </button>
 
-        <button
+        <button className="circle-btn"
           onClick={() =>
             setFrameIndex(prev => Math.max(prev - 1, 0))
           }
         >
-          Previous
+          ⏮
         </button>
 
-        <button
+        <button className="circle-btn"
           onClick={() =>
             setFrameIndex(prev =>
               Math.min(prev + 1, playbackData.length - 1)
             )
           }
         >
-          Next
+          ⏭
         </button>
 
-        <button
+        <button className="circle-btn"
           onClick={() => {
             setFrameIndex(0);
             setIsPlaying(false);
           }}
         >
-          Reset
+          ⟲
         </button>
 
       </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import metadata from "../data/metadata.json";
 import HeatmapOverlay from "../components/HeatmapOverlay";
+import TargetHeatmap from "../components/TargetHeatmap";
 
 const TargetAnalytics = () => {
   // accumulate all shots for analysis
@@ -30,7 +31,8 @@ const TargetAnalytics = () => {
       /> */}
 
       {/* Heatmap Overlay */}
-      <HeatmapOverlay shots={shots} />
+      {/* <HeatmapOverlay shots={shots} /> */}
+      <TargetHeatmap shots={shots} />
     </div>
 
     </div>

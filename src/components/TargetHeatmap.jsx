@@ -11,7 +11,30 @@ const TargetHeatmap = ({ shots }) => {
 
     ctx.clearRect(0,0,canvas.width,canvas.height);
 
-    shots.forEach((shot)=>{
+    if(!shots || shots.length === 0) return;
+
+    let sumX = 0;
+    let sumY = 0;
+
+    shots.forEach(s => {
+      sumX += s.x;
+      sumY += s.y;
+    });
+
+    const centerX = sumX / shots.length;
+    const centerY = sumY / shots.length;
+
+    let maxDistance = 0;
+
+    shots.forEach((shot,index)=>{
+
+      const dx = shot.x - centerX;
+      const dy = shot.y - centerY;
+      const distance = Math.sqrt(dx*dx + dy*dy);
+
+      if(distance > maxDistance) maxDistance = distance;
+
+      /* HEATMAP */
 
       const gradient = ctx.createRadialGradient(
         shot.x,
@@ -19,7 +42,7 @@ const TargetHeatmap = ({ shots }) => {
         5,
         shot.x,
         shot.y,
-        35
+        30
       );
 
       gradient.addColorStop(0,"rgba(255,0,0,0.8)");
@@ -29,10 +52,32 @@ const TargetHeatmap = ({ shots }) => {
       ctx.fillStyle = gradient;
 
       ctx.beginPath();
-      ctx.arc(shot.x,shot.y,35,0,Math.PI*2);
+      ctx.arc(shot.x,shot.y,30,0,Math.PI*2);
       ctx.fill();
 
+      /* BULLET HOLE */
+
+      ctx.fillStyle = "black";
+      ctx.beginPath();
+      ctx.arc(shot.x,shot.y,3,0,Math.PI*2);
+      ctx.fill();
+
+      /* SHOT NUMBER */
+
+      ctx.fillStyle = "white";
+      ctx.font = "12px Arial";
+      ctx.fillText(index+1,shot.x+6,shot.y-6);
+
     });
+
+    /* GROUPING CIRCLE */
+
+    ctx.strokeStyle = "yellow";
+    ctx.lineWidth = 2;
+
+    ctx.beginPath();
+    ctx.arc(centerX,centerY,maxDistance,0,Math.PI*2);
+    ctx.stroke();
 
   },[shots]);
 
@@ -45,7 +90,15 @@ const TargetHeatmap = ({ shots }) => {
       margin:"auto"
     }}>
 
-     
+      <img
+        src="/target.png"
+        alt="target"
+        style={{
+          width:"100%",
+          height:"100%",
+          display:"block"
+        }}
+      />
 
       <canvas
         ref={canvasRef}
@@ -62,6 +115,7 @@ const TargetHeatmap = ({ shots }) => {
     </div>
 
   );
+
 };
 
 export default TargetHeatmap;

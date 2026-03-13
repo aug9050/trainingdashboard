@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 
-const TargetHeatmap = ({ shots }) => {
+const HeatmapOverlay = ({ shots }) => {
 
   const canvasRef = useRef(null);
 
@@ -72,4 +72,4 @@ const TargetHeatmap = ({ shots }) => {
   );
 };
 
-export default TargetHeatmap;
+export default HeatmapOverlay;

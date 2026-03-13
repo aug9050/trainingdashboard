@@ -9,23 +9,51 @@ const CanvasShots = ({ shots }) => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
 
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const bulletImg = new Image();
+    bulletImg.src = "/bullet-hole.png";
 
-    shots.forEach((shot, index) => {
+    bulletImg.onload = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      ctx.beginPath();
-      ctx.arc(shot.x, shot.y, 6, 0, Math.PI * 2);
-      ctx.fillStyle = "cyan";
-      ctx.fill();
+      shots.forEach((shot, index) => {
 
-      ctx.shadowBlur = 12;
-      ctx.shadowColor = "cyan";
+        // ctx.beginPath();
+        // ctx.arc(shot.x, shot.y, 6, 0, Math.PI * 2);
+        // ctx.fillStyle = "cyan";
+        // ctx.fill();
 
-      ctx.fillStyle = "white";
-      ctx.font = "12px Arial";
-      ctx.fillText(index + 1, shot.x + 8, shot.y - 8);
+        // ctx.shadowBlur = 12;
+        // ctx.shadowColor = "cyan";
 
-    });
+        const size = 20;
+
+        // ctx.drawImage(
+        //   bulletImg,
+        //   shot.x - size / 2,
+        //   shot.y - size / 2,
+        //   size,
+        //   size
+        // );
+        ctx.save();
+        ctx.translate(shot.x, shot.y);
+        ctx.rotate(Math.random() * 0.3);
+        ctx.drawImage(bulletImg, -size/2, -size/2, size, size);
+        ctx.restore();
+
+        ctx.fillStyle = "rgba(0,0,0,0.5)";
+        ctx.beginPath();
+        ctx.arc(shot.x, shot.y, 6, 0, Math.PI * 2);
+        ctx.fill();
+
+        /* Shot number */
+        ctx.fillStyle = "red";
+        ctx.font = "12px Arial";
+        ctx.fillText(index + 1, shot.x + 8, shot.y - 8);
+
+      });
+    };
+
+    
 
   }, [shots]);
 
