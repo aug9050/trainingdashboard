@@ -9,7 +9,7 @@ import { Box } from '@mui/material';
 import Marksmanship from "./pages/Marksmanship";
 
 const App = () => (
-  <Box display="flex" height="100vh">
+  <Box display="flex" height="200vh">
     <Sidebar />
     <Box flex={1} p={3} bgcolor="background.default">
       <Routes>

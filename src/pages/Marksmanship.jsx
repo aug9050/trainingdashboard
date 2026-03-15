@@ -24,6 +24,11 @@ const Marksmanship = () => {
     .slice(0, frameIndex + 1)
     .flatMap(p => p.shots || []);
 
+  const mantisData = metadata.mantisSensor || [];
+
+  const currentShot = mantisData[frameIndex] || {};
+
+  //console.log("currentShot", currentShot)
   // Example filtering logic
   shots = shots.filter(s => {
 
@@ -64,41 +69,13 @@ const Marksmanship = () => {
   return (
     <div>
 
-      {/* LEFT RIGHT LAYOUT */}
-      {/* <div className="playback-layout">
-
-
-        <div className="left-panels">
-
-          <div className="panel">
-            <FilterAnalysis />
-          </div>
-
-          <div className="panel">
-            <MantisWidget shots={metadata.mantisSensor} />
-          </div>
-
-        </div>
-
-
-        <div className="playback-panel">
-
-          <div className="target-container">
-
-            <Playback />
-          </div>
-
-        </div>
-
-      </div> */}
-
       <div className="marksmanship-layout">
 
         <div className="left-panel">
 
-          <FilterAnalysis onFilterChange={setFilters}/>
+          <FilterAnalysis shots={shots} onFilterChange={setFilters}/>
 
-          <MantisWidget shots={shots} />
+          <MantisWidget shot={currentShot} />
 
         </div>
 
@@ -112,6 +89,7 @@ const Marksmanship = () => {
               prev={() => setFrameIndex(i => Math.max(i - 1, 0))}
               next={() => setFrameIndex(i => Math.min(i + 1, playbackData.length - 1))}
               play={() => setPlaying(p => !p)}
+              reset={() => {setFrameIndex(0); setIsPlaying(false);}}
             />
 
         </div>

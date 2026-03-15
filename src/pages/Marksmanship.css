@@ -1,79 +1,5 @@
-.playback-layout{
-  display:grid;
-  grid-template-columns:300px 1fr;
-  gap:30px;
-}
 
-.left-panels{
-  display:flex;
-  flex-direction:column;
-  gap:20px;
-}
-
-.panel{
-  box-shadow:
-    0 0 20px rgba(0,0,0,0.4),
-    inset 0 0 10px rgba(255,255,255,0.05);
-}
-
-.playback-panel{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:flex-start;
-}
-
-.target-container{
-  position:relative;
-  width:420px;
-  height:650px;
-}
-
-.target-image{
-  width:100%;
-  height:100%;
-}
-
-.target-container canvas{
-  position:absolute;
-  top:0;
-  left:0;
-}
-
-.playback-controls{
-  display:flex;
-  gap:20px;
-  margin-top:20px;
-}
-
-.circle-btn{
-  width:50px;
-  height:50px;
-  border-radius:50%;
-  border:none;
-  background:#1e4fa3;
-  color:white;
-  font-size:20px;
-  cursor:pointer;
-  box-shadow:0 0 10px rgba(0,150,255,0.4);
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  transition:all 0.2s ease;
-}
-
-.circle-btn:hover{
-  background:#2c6be0;
-  transform:scale(1.1);
-}
-
-.circle-btn:active{
-  transform:scale(0.95);
-}
-
-/*  */
+/* Marksmanship.jsx */
 .marksmanship-layout{
   display:grid;
   grid-template-columns:320px 1fr;
@@ -98,11 +24,19 @@
   border-radius:10px;
 }
 
-/* Control Style */
+/* PlaybackControls.jsx */
 .playback-controls{
   display:flex;
   align-items:center;
   gap:20px;
+  margin-top:10px;
+}
+
+.playback-playpause{
+  display:flex;
+  align-items:center;
+  justify-content: center; 
+   gap:20px;
   margin-top:10px;
 }
 
@@ -115,6 +49,22 @@
   color:white;
   font-size:24px;
   cursor:pointer;
+  box-shadow:0 0 10px rgba(0,150,255,0.4);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  transition:all 0.2s ease;
+}
+
+.circle-btn:hover{
+  background:#2c6be0;
+  transform:scale(1.1);
+}
+
+.circle-btn:active{
+  transform:scale(0.95);
 }
 
 .shot-number{
@@ -123,14 +73,23 @@
   color:#f2c94c;
 }
 
-/* Target Container */
+/* TargetBoard.jsx */
 .target-container{
   position:relative;
-  width:420px;
-  height:650px;
+  width:400px;
+  height:700px;
 }
 
 .target-image{
+  width:100%;
+  height:100%;
+  display:block;
+}
+
+.shots-canvas{
+  position:absolute;
+  top:0;
+  left:0;
   width:100%;
   height:100%;
 }
@@ -141,55 +100,252 @@
   left:0;
 }
 
-/* Filter Analaysis */
+/* FilterAnalysis.jsx */
 .filter-panel{
-  background:#0f2f5a;
-  padding:20px;
-  border-radius:10px;
+  background:#0a2342;
+  padding:14px;
+  color:#d8eaff;
+  border:2px solid #6bb6ff;
+  box-shadow:
+    0 0 6px #4da6ff,
+    inset 0 0 12px rgba(100,170,255,0.25);
+
+  font-family:"Segoe UI", Arial;
+  font-size:13px;
+}
+
+.filter-panel::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 2px,
+    rgba(255,255,255,0.03) 3px
+  );
+  pointer-events:none;
 }
 
 .filter-row{
   display:flex;
-  gap:20px;
-  margin-bottom:15px;
+  gap:45px;
+  margin-bottom:10px;
+}
+
+.filter-box label{
+  display:block;
+  font-size:14px;
+  font-weight:bold;
+  margin-bottom:4px;
+}
+
+.filter-box select{
+  background:#0d3c73;
+  color:white;
+  border:2px solid #ffffff;
+  padding:5px 30px;
 }
 
 .analysis-table{
   width:100%;
   border-collapse:collapse;
+  margin-top:6px;
+  box-shadow:
+  0 0 6px rgba(80,150,255,0.6);
 }
 
 .analysis-table td{
-  padding:6px;
+  border:1px solid #ffffff;
+  padding:4px 6px;
+  background:#0a2b52;
 }
 
-.analysis-table button{
-  margin:0 3px;
+.label{
+  color:#d6eaff;
+  font-weight:500;
 }
 
-.score{
-  margin-top:10px;
+.value-blue{
+  color:#00d4ff;
   font-weight:bold;
-  color:#f2c94c;
+  min-width:50px; 
+  text-align:center;
+}
+
+.value-cyan{
+  color:#00ffff;
+  min-width:50px; 
+  text-align:center;
+}
+
+.value-yellow{
+  color:#ffd84d;
+  font-weight:bold;
+  min-width:50px; 
+  text-align:center;
+}
+
+.value-red{
+  color:#ff5a5a;
+  font-weight:bold;
+  min-width:50px; 
+  text-align:center;
+}
+
+.buttons{
+  text-align:center;
+}
+
+.buttons button{
+
+  width:20px;
+  height:20px;
+
+  border:1px solid #6bb6ff;
+  background:#ffffff;
+
+  color:#000000;
+  font-weight:bold;
+  font-size:15px;
+
+  margin:0 2px;
+
+  cursor:pointer;
+  
+  border-radius:50%;
+
+  box-shadow:0 0 4px #3aa0ff;
+}
+
+.buttons button:hover{
+  background:#1d4f8f;
+}
+
+.score-row{
+  display:flex;
+  align-items:center;
+  gap:106px;
+  margin:6px 0;
+  font-weight:bold;
+}
+
+.score-row span{
+  color:#ffd84d;
+  font-weight:bold;
 }
 
 .analysis-text{
-  margin-top:10px;
+  margin-top:6px;
+}
+
+.analysis-text strong{
+  color:white;
 }
 
 .advice{
-  margin-top:10px;
+  margin-top:6px;
 }
 
-/* mantis */
-.mantis-row{
+.segment-indicator{
+  text-align:center;
+  font-size:24px;
+
+  color:#ffd84d;
+
+  margin:6px 0;
+
+  text-shadow:
+    0 0 6px #ffd84d,
+    0 0 12px #ffcc00;
+}
+
+/* MantisWidget.jsx */
+.mantis-panel{
+  background:#142b4d;
+  border:2px solid #ffffff;
+  border-radius:6px;
+  padding:12px;
+  justify-content:center;
+}
+
+.mantis-title{
+  color:#ffae00;
+  font-size:16px;
+  font-weight:bold;
+  margin-bottom:6px;
+}
+
+/* .mantis-chart-container{ */
+.mantis-chart-area{
+  /* display:flex;
+  justify-content:center;
+  align-items:center;
+  margin:5px 0; */
+  display:grid;
+  place-items:center;
+  width:100%;
+  padding:10px 0;
+}
+
+.mantis-footer{
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:end;
+  margin-top:6px;
+}
+
+.mantis-legend{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  font-size:12px;
+  color:#ffffff;
+}
+
+.legend-item{
   display:flex;
   align-items:center;
-  gap:10px;
-  margin-bottom:10px;
+  gap:6px;
 }
 
-.mantis-row span{
-  width:60px;
-  font-size:12px;
+.legend-color{
+  width:10px;
+  height:10px;
+}
+
+.legend-color.hold{
+  background:#00e5ff;
+}
+
+.legend-color.trigger{
+  background:#ff9800;
+}
+
+.legend-color.recoil{
+  background:#ff3b3b;
+}
+
+.mantis-score{
+  font-size:24px;
+  font-weight:bold;
+  color:#ffc107;
+  text-align:right;
+}
+
+/* shotDiagnosis.js */
+.shot-diagnosis{
+
+  margin-top:10px;
+  padding:8px;
+
+  border:2px solid #ffffff;
+  border-radius:4px;
+
+  text-align:center;
+  font-weight:bold;
+
+  color:#f2c94c;
+  background:#142b4d;
+
 }

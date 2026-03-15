@@ -1,3 +1,4 @@
+import React from "react";
 import {
   LineChart,
   Line,
@@ -6,7 +7,6 @@ import {
   ResponsiveContainer
 } from "recharts";
 
-import React from "react";
 
 export default function MantisChart({value = 0, color}){
 

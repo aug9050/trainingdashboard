@@ -1,47 +1,56 @@
-import React from "react";
+import React, { useState } from "react";
+import MantisCircleChart from "./MantisCircleChart";
+import { getShotDiagnosis } from "../utils/shotDiagnosis"
 
-import metadata from "../data/metadata.json"
-import MantisChart from "./MantisChart"
-
-export default function MantisWidget(){
-
-  const shots = metadata.mantisSensor || []
-
-  const lastShot = shots[shots.length - 1] || {};
-
-  console.log("lastShot", lastShot)
-
-  if(!lastShot) return null
-
+export default function MantisWidget({ shot = {} }){
+  //console.log("widget shot", shot)
+  //const [trace, setTrace] = useState([]);
+  const trace = shot.trace?.hold || [];
+  const diagnosis = getShotDiagnosis(trace);
   return(
 
-    <div className="panel">
+    <div>
+      <h3 className="mantis-title">
+        Mantis Shot Analysis
+      </h3>
 
-      <h3>Mantis Shot Analysis</h3>
+      <div className="mantis-panel">
+        <div className="mantis-chart-area"> 
+          <MantisCircleChart 
+          shot={shot} />
+          {/*//onTraceReady={setTrace} />*/}
+        </div>
+        
+        <div className="mantis-footer">
+          <div className="mantis-legend">
+            <div className="legend-item">
+              <span className="legend-color hold"></span>
+              Hold
+            </div>
 
-      <div className="mantis-row">
+            <div className="legend-item">
+              <span className="legend-color trigger"></span>
+              Trigger
+            </div>
 
-        <span>Hold</span>
-        <MantisChart data={lastShot.score   || []} color="#4caf50"/>
+            <div className="legend-item">
+              <span className="legend-color recoil"></span>
+              Recoil
+            </div>
+          </div>
 
+          <div className="mantis-score">
+            {shot.score || "-"}
+          </div>
+
+        </div>
       </div>
 
-      <div className="mantis-row">
-
-        <span>Trigger</span>
-        <MantisChart data={lastShot.triggerControl    || []} color="#ff9800"/>
-
-      </div>
-
-      <div className="mantis-row">
-
-        <span>Recoil</span>
-        <MantisChart data={lastShot.stability  || []} color="#f44336"/>
-
+      <div className="shot-diagnosis">
+        {diagnosis}
       </div>
 
     </div>
-
+    
   )
-
 }

@@ -1,0 +1,3 @@
+node generateMantisData.js
+
+node generateTrainingData.js
