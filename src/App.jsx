@@ -7,6 +7,7 @@ import Playback from './pages/Playback';
 import TargetAnalytics from './pages/TargetAnalytics';
 import { Box } from '@mui/material';
 import Marksmanship from "./pages/Marksmanship";
+import VideoBookmarkPlayer from "./pages/VideoBookmarkPlayer";
 
 const App = () => (
   <Box display="flex" height="200vh">
@@ -19,6 +20,7 @@ const App = () => (
         <Route path="/playback" element={<Playback />} />
         <Route path="/analytics" element={<TargetAnalytics />} />
         <Route path="/marksmanship" element={<Marksmanship />} />
+        <Route path="/videobookmarkplayer" element={<VideoBookmarkPlayer />} />
       </Routes>
     </Box>
   </Box>

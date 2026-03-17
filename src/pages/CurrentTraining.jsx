@@ -3,7 +3,8 @@ import ChartComponent from '../components/ChartComponent';
 import metadata from '../data/metadata.json';
 
 const CurrentTraining = () => {
-  const data = metadata.currentTraining.judgmental;
+  //const data = metadata.currentTraining.judgmental;
+  const data = [];
   const accuracyData = data.filter(d => d.metric === "accuracy");
 
   return (

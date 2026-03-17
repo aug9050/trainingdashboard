@@ -1,0 +1,8 @@
+.video-container .marker {
+  opacity: 0;
+  transition: 0.2s;
+}
+
+.video-container:hover .marker {
+  opacity: 1;
+}

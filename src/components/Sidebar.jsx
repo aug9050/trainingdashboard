@@ -10,7 +10,8 @@ const Sidebar = () => {
     { text: 'Past Training', icon: <History />, path: '/past' },
     { text: 'Playback', icon: <PlayArrow />, path: '/playback' },
     { text: "Target Analytics", path: "/analytics" },
-    { text: "Marksmanship", icon: <PlayArrow />, path: "/marksmanship" }
+    { text: "Marksmanship", icon: <PlayArrow />, path: "/marksmanship" },
+    { text: "VideoBookmarkPlayer", icon: <PlayArrow />, path: "/videobookmarkplayer" }
 
   ];
 
